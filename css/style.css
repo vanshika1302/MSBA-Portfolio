@@ -486,6 +486,26 @@ ul { padding: 0; margin: 0; list-style: none; }
   font-style: italic;
   font-family: var(--serif);
 }
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+.project-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.project-link:hover { color: var(--accent); }
+.project-link .arrow { transition: transform 0.2s ease; }
+.project-link:hover .arrow { transform: translate(2px, -2px); }
 .project-card-empty {
   align-items: center;
   justify-content: center;
