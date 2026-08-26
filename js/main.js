@@ -166,4 +166,84 @@
       }
     });
   });
+
+  /* ---------- Scroll progress bar ---------- */
+  var progressBar = document.getElementById("scroll-progress");
+  function updateProgress() {
+    if (!progressBar) return;
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - doc.clientHeight;
+    var pct = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 : 0;
+    progressBar.style.width = pct + "%";
+  }
+  document.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+
+  /* ---------- Project filter pills ---------- */
+  var filterPills = Array.prototype.slice.call(document.querySelectorAll(".filter-pill"));
+  var projectCards = Array.prototype.slice.call(document.querySelectorAll(".project-card"));
+  filterPills.forEach(function (pill) {
+    pill.addEventListener("click", function () {
+      var filter = pill.getAttribute("data-filter");
+      filterPills.forEach(function (p) {
+        p.classList.toggle("is-active", p === pill);
+        p.setAttribute("aria-pressed", p === pill ? "true" : "false");
+      });
+      projectCards.forEach(function (card) {
+        var cat = card.getAttribute("data-category");
+        var show = filter === "all" || cat === "all" || cat === filter;
+        card.classList.toggle("is-hidden", !show);
+      });
+    });
+  });
+
+  /* ---------- Project card cursor glow ---------- */
+  projectCards.forEach(function (card) {
+    card.addEventListener("mousemove", function (e) {
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - rect.left) + "px");
+      card.style.setProperty("--my", (e.clientY - rect.top) + "px");
+    });
+  });
+
+  /* ---------- Project screenshot lightbox ---------- */
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxCaption = document.getElementById("lightbox-caption");
+  var lightboxClose = document.getElementById("lightbox-close");
+  var lastFocused = null;
+
+  function openLightbox(src, caption) {
+    if (!lightbox || !lightboxImg) return;
+    lastFocused = document.activeElement;
+    lightboxImg.src = src;
+    lightboxImg.alt = caption || "Project screenshot";
+    lightboxCaption.textContent = caption || "";
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+    if (lightboxClose) lightboxClose.focus();
+  }
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.hidden = true;
+    lightboxImg.src = "";
+    document.body.style.overflow = "";
+    if (lastFocused && "focus" in lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll(".project-thumb").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openLightbox(btn.getAttribute("data-lightbox"), btn.getAttribute("data-caption"));
+    });
+  });
+  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+  });
 })();

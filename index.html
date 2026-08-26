@@ -19,6 +19,7 @@
 <body>
 
 <div class="grain"></div>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ===== NAV ===== -->
 <header class="site-header" id="site-header">
@@ -27,9 +28,9 @@
 
     <nav class="main-nav" id="main-nav">
       <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
       <a href="#experience" class="nav-link">Experience</a>
       <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Projects</a>
       <a href="#education" class="nav-link">Education</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -141,11 +142,188 @@
     </div>
   </section>
 
-  <!-- ===== EXPERIENCE ===== -->
-  <section class="section section-alt" id="experience">
+  <!-- ===== PROJECTS ===== -->
+  <section class="section section-alt" id="projects">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-num">02</span>
+        <h2>Projects</h2>
+      </div>
+      <p class="section-intro reveal">
+        A working set of projects from my professional and academic work, including seven older repos
+        I recently rebuilt end-to-end — fixed, secured, redesigned, and shipped live. Full write-ups are
+        on the way as I build out this section during the MSBA program.
+      </p>
+
+      <div class="project-filter reveal" role="group" aria-label="Filter projects by category">
+        <button class="filter-pill is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-pill" data-filter="web" aria-pressed="false">Web Apps</button>
+        <button class="filter-pill" data-filter="ml" aria-pressed="false">ML &amp; Data</button>
+        <button class="filter-pill" data-filter="enterprise" aria-pressed="false">Enterprise</button>
+      </div>
+
+      <div class="project-grid" id="project-grid">
+        <article class="project-card reveal" data-category="ml">
+          <div class="project-tag">Business Analytics · Pricing Model</div>
+          <h3>Airbnb Smart Price Optimizer</h3>
+          <p>Built an end-to-end ETL and SQL analytics pipeline on 49K NYC Airbnb listings —
+          loaded into a Snowflake-ready warehouse, analyzed across 7 business questions, then
+          modeled with a Random Forest (R²=0.50) that flags listings priced 40%+ off market rate.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://vanshika1302.github.io/Airbnb-Smart-Price-Optimizer/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+            <a class="project-link" href="https://github.com/vanshika1302/Airbnb-Smart-Price-Optimizer" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-category="enterprise">
+          <div class="project-tag">Enterprise Support</div>
+          <h3>Retail Space Planning Support</h3>
+          <p>Supported an enterprise retail planning application by analyzing production incidents,
+          validating SQL Server data, performing root cause analysis, and coordinating releases through
+          ServiceNow and Jira.</p>
+          <span class="project-status">Case study coming soon</span>
+        </article>
+
+        <article class="project-card reveal" data-category="ml">
+          <div class="project-tag">Computer Vision</div>
+          <h3>Vehicle Logo Recognition</h3>
+          <p>Applied computer vision techniques in Python to classify vehicle logos from image data.</p>
+          <span class="project-status">Case study coming soon</span>
+        </article>
+
+        <article class="project-card reveal" data-category="ml">
+          <div class="project-tag">Cybersecurity · ML</div>
+          <h3>Phishing URL Detection</h3>
+          <p>Built classification models to detect phishing URLs, applying machine learning to
+          cybersecurity analytics.</p>
+          <span class="project-status">Case study coming soon</span>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="web">
+          <button class="project-thumb" data-lightbox="assets/projects/grocifun.jpg" data-caption="GrociFun — nutrition-aware grocery app, live demo" aria-label="View screenshot of GrociFun">
+            <img src="assets/projects/grocifun.jpg" alt="GrociFun product browse screen with nutrition badges" loading="lazy">
+          </button>
+          <div class="project-tag">Full-Stack · MERN</div>
+          <h3>GrociFun — Nutrition-Aware Grocery App</h3>
+          <p>A grocery app that surfaces calories and macros for every item and suggests a balanced
+          basket under a calorie budget. One of seven old repos I recently revived — fixed a broken
+          backend, added the nutrition model, and rebuilt the React frontend from scratch.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://vanshika1302.github.io/GrociFun/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+            <a class="project-link" href="https://github.com/vanshika1302/GrociFun" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="web">
+          <button class="project-thumb" data-lightbox="assets/projects/mediclick.jpg" data-caption="Mediclick — telehealth appointment booking, live demo" aria-label="View screenshot of Mediclick">
+            <img src="assets/projects/mediclick.jpg" alt="Mediclick landing page for telehealth appointment booking" loading="lazy">
+          </button>
+          <div class="project-tag">Full-Stack · Healthcare</div>
+          <h3>Mediclick — Telehealth Booking</h3>
+          <p>Built during COVID so patients could book online consultations with doctors. Revived from
+          a repo with a real plaintext-password bug — fixed the security issue, refreshed the UI with
+          a calmer clinical theme, and shipped a live demo that runs on sample data.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://vanshika1302.github.io/mediclick/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+            <a class="project-link" href="https://github.com/vanshika1302/mediclick" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="web">
+          <button class="project-thumb" data-lightbox="assets/projects/yourbook.jpg" data-caption="yourBook — book discovery app, live demo" aria-label="View screenshot of yourBook">
+            <img src="assets/projects/yourbook.jpg" alt="yourBook search results shown as a book card grid" loading="lazy">
+          </button>
+          <div class="project-tag">Full-Stack · Book Discovery</div>
+          <h3>yourBook</h3>
+          <p>A book search app built on the Google Books API — search by title, author, or topic and
+          browse results as a clean card grid. Redesigned the UI and converted it to a fully
+          static, backend-free site for hosting.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://vanshika1302.github.io/yourBook/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+            <a class="project-link" href="https://github.com/vanshika1302/yourBook" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="web">
+          <button class="project-thumb" data-lightbox="assets/projects/zodiacapp.jpg" data-caption="Zodiac Sign Lookup, live demo" aria-label="View screenshot of the Zodiac Sign Lookup app">
+            <img src="assets/projects/zodiacapp.jpg" alt="Zodiac sign lookup app with a dark celestial theme" loading="lazy">
+          </button>
+          <div class="project-tag">Front-End · Web App</div>
+          <h3>Zodiac Sign Lookup</h3>
+          <p>A lightweight zodiac lookup tool with a searchable sign grid, date ranges, and
+          personality profiles. Fixed a broken script path that had kept the original app from
+          ever actually running, then gave it a dark celestial redesign.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://vanshika1302.github.io/zodiacApp/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+            <a class="project-link" href="https://github.com/vanshika1302/zodiacApp" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="ml">
+          <button class="project-thumb" data-lightbox="assets/projects/slr-ww2weather.jpg" data-caption="WWII Weather Regression dashboard, live demo" aria-label="View screenshot of the WWII Weather Regression dashboard">
+            <img src="assets/projects/slr-ww2weather.jpg" alt="Dashboard showing a linear regression fit on WWII weather data" loading="lazy">
+          </button>
+          <div class="project-tag">Data Science · Regression</div>
+          <h3>WWII Weather Regression</h3>
+          <p>A simple linear regression model predicting max temperature from min temperature across
+          119K WWII-era weather station readings, with an interactive dashboard summarizing model
+          fit and accuracy.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://vanshika1302.github.io/slr_ww2weather/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
+            <a class="project-link" href="https://github.com/vanshika1302/slr_ww2weather" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="ml">
+          <button class="project-thumb" data-lightbox="assets/projects/hrchatbot.jpg" data-caption="HR Policy Chatbot demo" aria-label="View screenshot of the HR Policy Chatbot">
+            <img src="assets/projects/hrchatbot.jpg" alt="HR policy chatbot answering a question with a grounded response" loading="lazy">
+          </button>
+          <div class="project-tag">AI · RAG Chatbot</div>
+          <h3>HR Policy Chatbot</h3>
+          <p>A retrieval-augmented chatbot that answers HR policy questions by embedding company
+          documents with sentence-transformers and generating grounded answers with a local
+          flan-t5 model — no paid API required.</p>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/vanshika1302/HRChatBot" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
+          </div>
+          <span class="project-status">Live demo: coming to Hugging Face Spaces</span>
+        </article>
+
+        <article class="project-card reveal has-thumb" data-category="ml">
+          <button class="project-thumb" data-lightbox="assets/projects/filechecker.jpg" data-caption="PE Malware Classifier — classification result" aria-label="View screenshot of the PE Malware Classifier">
+            <img src="assets/projects/filechecker.jpg" alt="File classifier showing a malicious/legitimate prediction for an uploaded executable" loading="lazy">
+          </button>
+          <div class="project-tag">ML · Security</div>
+          <h3>PE Malware Classifier</h3>
+          <p>A Flask app that statically analyzes uploaded Windows executables and classifies them as
+          malicious or legitimate using a Random Forest trained on 138K labeled PE files
+          (99.5% test accuracy).</p>
+          <span class="project-status">Private repo — happy to walk through in an interview</span>
+        </article>
+
+        <article class="project-card project-card-empty reveal" data-category="all">
+          <div class="plus">+</div>
+          <h3>More on the way</h3>
+          <p>New Business, Analytics &amp; AI Application projects from the MSBA program will land here.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close screenshot preview">&times;</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">03</span>
         <h2>Experience</h2>
       </div>
 
@@ -224,10 +402,10 @@
   </section>
 
   <!-- ===== SKILLS ===== -->
-  <section class="section" id="skills">
+  <section class="section section-alt" id="skills">
     <div class="container">
       <div class="section-head reveal">
-        <span class="section-num">03</span>
+        <span class="section-num">04</span>
         <h2>Skills</h2>
       </div>
 
@@ -279,64 +457,6 @@
             <span class="chip">Microsoft 365</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section class="section section-alt" id="projects">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-num">04</span>
-        <h2>Projects</h2>
-      </div>
-      <p class="section-intro reveal">
-        A first set of projects from my professional and academic work — full write-ups are on the way
-        as I build out this section during the MSBA program.
-      </p>
-
-      <div class="project-grid">
-        <article class="project-card reveal">
-          <div class="project-tag">Business Analytics · Pricing Model</div>
-          <h3>Airbnb Smart Price Optimizer</h3>
-          <p>Built an end-to-end ETL and SQL analytics pipeline on 49K NYC Airbnb listings —
-          loaded into a Snowflake-ready warehouse, analyzed across 7 business questions, then
-          modeled with a Random Forest (R²=0.50) that flags listings priced 40%+ off market rate.</p>
-          <div class="project-links">
-            <a class="project-link" href="https://vanshika1302.github.io/Airbnb-Smart-Price-Optimizer/" target="_blank" rel="noopener">Live demo <span class="arrow">↗</span></a>
-            <a class="project-link" href="https://github.com/vanshika1302/Airbnb-Smart-Price-Optimizer" target="_blank" rel="noopener">Code <span class="arrow">↗</span></a>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-tag">Enterprise Support</div>
-          <h3>Retail Space Planning Support</h3>
-          <p>Supported an enterprise retail planning application by analyzing production incidents,
-          validating SQL Server data, performing root cause analysis, and coordinating releases through
-          ServiceNow and Jira.</p>
-          <span class="project-status">Case study coming soon</span>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-tag">Computer Vision</div>
-          <h3>Vehicle Logo Recognition</h3>
-          <p>Applied computer vision techniques in Python to classify vehicle logos from image data.</p>
-          <span class="project-status">Case study coming soon</span>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-tag">Cybersecurity · ML</div>
-          <h3>Phishing URL Detection</h3>
-          <p>Built classification models to detect phishing URLs, applying machine learning to
-          cybersecurity analytics.</p>
-          <span class="project-status">Case study coming soon</span>
-        </article>
-
-        <article class="project-card project-card-empty reveal">
-          <div class="plus">+</div>
-          <h3>More on the way</h3>
-          <p>New Business, Analytics &amp; AI Application projects from the MSBA program will land here.</p>
-        </article>
       </div>
     </div>
   </section>
